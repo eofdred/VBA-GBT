@@ -268,46 +268,93 @@
 
     .cta-btn:hover .btn-icon { transform: rotate(15deg) scale(1.2); }
 
-    /* ─── FEATURE CARDS ─────────────────────────────────────── */
-    .cards {
+    /* ─── PROFILE PHOTO ─────────────────────────────────────── */
+    .profile-wrap {
+      animation: fadeInDown .8s ease both;
+    }
+
+    .profile-ring {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      box-shadow:
+        0 0 0 6px rgba(124,58,237,.15),
+        0 0 50px rgba(124,58,237,.35),
+        0 0 100px rgba(6,182,212,.15);
+      animation: ringPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes ringPulse {
+      from { box-shadow: 0 0 0 6px rgba(124,58,237,.15), 0 0 50px rgba(124,58,237,.35), 0 0 100px rgba(6,182,212,.15); }
+      to   { box-shadow: 0 0 0 10px rgba(124,58,237,.25), 0 0 80px rgba(124,58,237,.55), 0 0 140px rgba(6,182,212,.25); }
+    }
+
+    .profile-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── LINK BUTTONS ─────────────────────────────────────── */
+    .link-btns {
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
       animation: fadeInUp 1s .5s ease both;
     }
 
-    .card {
-      width: 200px;
-      padding: 1.5rem;
-      border-radius: 20px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(16px);
-      text-align: center;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1),
-                  background .3s ease,
-                  border-color .3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      background: rgba(124,58,237,.1);
-      border-color: rgba(124,58,237,.35);
-    }
-
-    .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: .75rem;
-      display: block;
-      filter: drop-shadow(0 0 10px currentColor);
-    }
-
-    .card-label {
-      font-size: .9rem;
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .85rem 2rem;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
       font-weight: 600;
-      color: rgba(248,250,252,.7);
-      letter-spacing: .05em;
+      letter-spacing: .04em;
+      text-decoration: none;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+      cursor: none;
+      overflow: hidden;
+      position: relative;
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1),
+                  background .25s ease,
+                  border-color .25s ease,
+                  box-shadow .25s ease;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,.08) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform .5s ease;
+    }
+
+    .link-btn:hover::before { transform: translateX(100%); }
+
+    .link-btn.grafik:hover {
+      background: rgba(124,58,237,.18);
+      border-color: rgba(124,58,237,.5);
+      box-shadow: 0 8px 30px -5px rgba(124,58,237,.4);
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .link-btn.data:hover {
+      background: rgba(6,182,212,.15);
+      border-color: rgba(6,182,212,.5);
+      box-shadow: 0 8px 30px -5px rgba(6,182,212,.4);
+      transform: translateY(-4px) scale(1.04);
     }
 
     /* ─── FOOTER LINE ─────────────────────────────────────── */
@@ -331,8 +378,9 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 600px) {
-      .cards { gap: 1rem; }
-      .card { width: 150px; padding: 1.2rem 1rem; }
+      .profile-ring { width: 120px; height: 120px; }
+      .link-btns { gap: .75rem; }
+      .link-btn { padding: .75rem 1.5rem; font-size: .9rem; }
     }
   </style>
 </head>
@@ -356,6 +404,14 @@
 
   <!-- Main Content -->
   <main class="wrapper">
+
+    <!-- Profile Photo -->
+    <div class="profile-wrap">
+      <div class="profile-ring">
+        <img src="depo/image.png" alt="Profil Fotoğrafı" />
+      </div>
+    </div>
+
     <span class="badge">✦ VBA-GBT Proje Portali ✦</span>
 
     <div class="hero-title">
@@ -378,19 +434,22 @@
       </a>
     </div>
 
-    <div class="cards">
-      <div class="card">
-        <span class="card-icon" style="color:#7c3aed;">🎨</span>
-        <div class="card-label">Renk Analizi</div>
-      </div>
-      <div class="card">
-        <span class="card-icon" style="color:#06b6d4;">✨</span>
-        <div class="card-label">İnteraktif</div>
-      </div>
-      <div class="card">
-        <span class="card-icon" style="color:#f472b6;">🌈</span>
-        <div class="card-label">Görsel Efektler</div>
-      </div>
+    <!-- Link Buttons -->
+    <div class="link-btns">
+      <a href="3. hafta/grafikler.png" class="link-btn grafik" id="grafik-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        Grafik
+      </a>
+      <a href="3. hafta/data.csv" class="link-btn data" id="data-btn" target="_blank" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="12" cy="5" rx="9" ry="3"/>
+          <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+        </svg>
+        Data
+      </a>
     </div>
 
     <p class="footer-line">VBA-GBT &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Tüm hakları saklıdır</p>
