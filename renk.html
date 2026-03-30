@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistematik Renk Analizörü</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Renk Seçim Alanı Stilleri - Gradient Matematiği */
+        #picker-area {
+            background-color: hsl(0, 100%, 50%); /* JS ile dinamik olarak güncellenir */
+            background-image: 
+                linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+                linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            touch-action: none; /* Mobilde kaydırmayı engeller */
+        }
+        
+        #picker-cursor {
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 2px white, 0 0 4px rgba(0,0,0,0.5);
+            transition: background-color 0.1s;
+        }
+
+        /* Hue (Ton) Slider Özel Stili */
+        .hue-slider {
+            background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+            -webkit-appearance: none;
+            height: 16px;
+            border-radius: 8px;
+            outline: none;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hue-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #1e293b;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .hue-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #1e293b;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        /* Özel Kaydırma Çubuğu */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Kopyalama Bildirimi Animasyonu */
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0); }
+            70% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+        .toast-animate {
+            animation: fadeOut 2s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen flex items-center justify-center p-4 md:p-8 font-sans">
+
+    <!-- Ana Konteyner -->
+    <main class="bg-slate-800 rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-4xl border border-slate-700">
+        
+        <!-- Sol Panel: Renk Seçim Arayüzü -->
+        <section class="flex-1 p-6 border-b md:border-b-0 md:border-r border-slate-700 flex flex-col gap-6">
+            <header>
+                <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    Renk Analiz Protokolü
+                </h1>
+                <p class="text-xs text-slate-400 mt-1">Sistematik HSV Matrisi Üzerinden Değer Çıkarımı</p>
+            </header>
+
+            <!-- Gradyen Seçici Matris -->
+            <div class="relative w-full aspect-square md:aspect-auto md:h-72 rounded-lg cursor-crosshair overflow-hidden shadow-inner" id="picker-area">
+                <div id="picker-cursor" class="absolute w-4 h-4 rounded-full pointer-events-none" style="left: 100%; top: 0%;"></div>
+            </div>
+
+            <!-- Ton (Hue) Kontrolü -->
+            <div class="flex flex-col gap-2">
+                <label for="hue-slider" class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex justify-between">
+                    <span>Spektrum (Hue)</span>
+                    <span id="hue-value">0°</span>
+                </label>
+                <input type="range" id="hue-slider" min="0" max="360" value="0" class="hue-slider w-full">
+            </div>
+        </section>
+
+        <!-- Sağ Panel: Veri Çıktıları -->
+        <section class="flex-1 p-6 bg-slate-800/50 flex flex-col gap-6">
+            
+            <!-- Seçilen Renk Önizlemesi -->
+            <div class="flex items-center gap-4 p-4 bg-slate-900 rounded-lg border border-slate-700/50 shadow-inner">
+                <div id="color-preview" class="w-16 h-16 rounded-md shadow-md" style="background-color: #ff0000;"></div>
+                <div class="flex-1">
+                    <h2 class="text-sm font-semibold text-slate-300">Aktif Renk Matrisi</h2>
+                    <p class="text-xs text-slate-500 mt-1">Tüm değerler matematiksel olarak birbirine bağlıdır.</p>
+                </div>
+            </div>
+
+            <!-- Çıktı Modülleri -->
+            <div class="grid grid-cols-1 gap-4">
+                
+                <!-- HEX Çıktısı -->
+                <div class="bg-slate-900 rounded-lg p-3 border border-slate-700/50 hover:border-slate-500 transition-colors flex justify-between items-center group">
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">HEXADECIMAL</span>
+                        <div id="hex-output" class="font-mono text-lg text-white font-medium tracking-wide">#FF0000</div>
+                    </div>
+                    <button onclick="copyValue('hex-output')" class="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded transition-colors" title="Değeri Kopyala">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                </div>
+
+                <!-- CMYK Çıktısı -->
+                <div class="bg-slate-900 rounded-lg p-3 border border-slate-700/50 hover:border-slate-500 transition-colors flex justify-between items-center group">
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">CMYK Vektörü</span>
+                        <div id="cmyk-output" class="font-mono text-base text-white tracking-wide">C: 0% M: 100% Y: 100% K: 0%</div>
+                    </div>
+                    <button onclick="copyValue('cmyk-output')" class="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded transition-colors" title="Değeri Kopyala">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                </div>
+
+                <!-- RGB Çıktısı -->
+                <div class="bg-slate-900 rounded-lg p-3 border border-slate-700/50 hover:border-slate-500 transition-colors flex justify-between items-center group">
+                    <div class="flex-1">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">RGB Matrisi</span>
+                        <div id="rgb-output" class="font-mono text-base text-white tracking-wide">rgb(255, 0, 0)</div>
+                    </div>
+                    <button onclick="copyValue('rgb-output')" class="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded transition-colors" title="Değeri Kopyala">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Bildirim Konteyneri -->
+    <div id="toast-container" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
+
+    <script>
+        // --- Durum Yönetimi (State) ---
+        // Algısal renk modellemesi için Hue (Ton), Saturation (Doygunluk) ve Value (Değer/Parlaklık) kullanıyoruz.
+        let state = {
+            h: 0,   // 0-360 arası derece
+            s: 1,   // 0-1 arası oran
+            v: 1,   // 0-1 arası oran
+            isDragging: false
+        };
+
+        // --- DOM Element Referansları ---
+        const els = {
+            pickerArea: document.getElementById('picker-area'),
+            cursor: document.getElementById('picker-cursor'),
+            hueSlider: document.getElementById('hue-slider'),
+            hueValue: document.getElementById('hue-value'),
+            preview: document.getElementById('color-preview'),
+            hexOut: document.getElementById('hex-output'),
+            cmykOut: document.getElementById('cmyk-output'),
+            rgbOut: document.getElementById('rgb-output'),
+            toastContainer: document.getElementById('toast-container')
+        };
+
+        // --- Matematiksel Dönüşüm Fonksiyonları (İlk Prensipler) ---
+
+        /**
+         * HSV'den RGB'ye dönüştürme mantığı.
+         * RGB renk kübünün silindirik koordinatlara yansıtılması prensibiyle çalışır.
+         */
+        function hsvToRgb(h, s, v) {
+            h = h / 360;
+            let r, g, b;
+
+            let i = Math.floor(h * 6);
+            let f = h * 6 - i;
+            let p = v * (1 - s);
+            let q = v * (1 - f * s);
+            let t = v * (1 - (1 - f) * s);
+
+            switch (i % 6) {
+                case 0: r = v, g = t, b = p; break;
+                case 1: r = q, g = v, b = p; break;
+                case 2: r = p, g = v, b = t; break;
+                case 3: r = p, g = q, b = v; break;
+                case 4: r = t, g = p, b = v; break;
+                case 5: r = v, g = p, b = q; break;
+            }
+
+            return {
+                r: Math.round(r * 255),
+                g: Math.round(g * 255),
+                b: Math.round(b * 255)
+            };
+        }
+
+        /**
+         * RGB'den CMYK'ya dönüşüm algoritması.
+         * Çıkarımsal (subtractive) renk modeline geçiş işlemi.
+         */
+        function rgbToCmyk(r, g, b) {
+            let c = 1 - (r / 255);
+            let m = 1 - (g / 255);
+            let y = 1 - (b / 255);
+            
+            let k = Math.min(c, Math.min(m, y));
+            
+            // Eğer siyah (k=1) ise diğer renkler 0 kabul edilir.
+            if (k === 1) {
+                return { c: 0, m: 0, y: 0, k: 100 };
+            }
+            
+            c = Math.round(((c - k) / (1 - k)) * 100);
+            m = Math.round(((m - k) / (1 - k)) * 100);
+            y = Math.round(((y - k) / (1 - k)) * 100);
+            k = Math.round(k * 100);
+            
+            return { c, m, y, k };
+        }
+
+        /**
+         * RGB'den HEX sistemine bit-kaydırma operasyonları ile dönüşüm.
+         */
+        function rgbToHex(r, g, b) {
+            return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1).toUpperCase();
+        }
+
+        // --- Arayüz Güncelleme Protokolleri ---
+
+        function updateOutputs() {
+            // Temel RGB hesaplaması
+            const rgb = hsvToRgb(state.h, state.s, state.v);
+            
+            // Türev dönüşümler
+            const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+            const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+            const rgbString = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+
+            // DOM Güncellemeleri
+            els.preview.style.backgroundColor = hex;
+            els.cursor.style.backgroundColor = hex;
+            
+            // İmleç görünürlüğünü arka planın zıtlığına göre ayarla (Açık renkte koyu çerçeve, koyu renkte açık çerçeve)
+            els.cursor.style.boxShadow = state.v < 0.5 ? "0 0 0 2px white, 0 0 4px rgba(0,0,0,0.5)" : "0 0 0 2px black, 0 0 4px rgba(255,255,255,0.5)";
+
+            els.hexOut.textContent = hex;
+            els.cmykOut.textContent = `C: ${cmyk.c}% M: ${cmyk.m}% Y: ${cmyk.y}% K: ${cmyk.k}%`;
+            els.rgbOut.textContent = rgbString;
+        }
+
+        function handlePickerInteraction(e) {
+            if (!state.isDragging && e.type !== 'pointerdown') return;
+            
+            // Tıklanan/sürüklenen X ve Y pozisyonlarının hesaplanması
+            const rect = els.pickerArea.getBoundingClientRect();
+            
+            // Sınır koruması (Clamp) - Değerlerin matris dışına çıkmasını önler
+            let x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+            let y = Math.max(0, Math.min(e.clientY - rect.top, rect.height));
+
+            // Piksel koordinatlarını Saturation (X) ve Value (Y) oranlarına dönüştürme
+            state.s = x / rect.width;
+            state.v = 1 - (y / rect.height); // Y ekseni ters çalışır (Aşağı gittikçe siyah artar)
+
+            // İmleci konumlandır (Yüzdesel olarak, duyarlılık için)
+            els.cursor.style.left = `${(x / rect.width) * 100}%`;
+            els.cursor.style.top = `${(y / rect.height) * 100}%`;
+
+            updateOutputs();
+        }
+
+        // --- Event Dinleyicileri (Interactivity) ---
+
+        // Pointer eventleri, hem fare (mouse) hem de dokunmatik (touch) ekranları tek merkezden yönetir.
+        els.pickerArea.addEventListener('pointerdown', (e) => {
+            state.isDragging = true;
+            els.pickerArea.setPointerCapture(e.pointerId);
+            handlePickerInteraction(e);
+        });
+
+        els.pickerArea.addEventListener('pointermove', handlePickerInteraction);
+
+        els.pickerArea.addEventListener('pointerup', (e) => {
+            state.isDragging = false;
+            els.pickerArea.releasePointerCapture(e.pointerId);
+        });
+
+        // Hue (Ton) slider değişimi
+        els.hueSlider.addEventListener('input', (e) => {
+            state.h = parseInt(e.target.value);
+            // Renk paletinin arka planını güncelle
+            els.pickerArea.style.backgroundColor = `hsl(${state.h}, 100%, 50%)`;
+            els.hueValue.textContent = `${state.h}°`;
+            updateOutputs();
+        });
+
+        // --- Yardımcı Fonksiyonlar ---
+
+        /**
+         * Seçilen veriyi güvenli bir şekilde panoya kopyalar.
+         */
+        function copyValue(elementId) {
+            const textToCopy = document.getElementById(elementId).textContent;
+            
+            // iFrame korumalarına karşı yedekli kopyalama stratejisi
+            try {
+                // Modern clipboard API (Çalışmayabilirse catch bloğuna düşer)
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(textToCopy).then(() => showToast(`Kopyalandı: ${textToCopy}`));
+                } else {
+                    // Güvenilir eski yöntem (Fallback)
+                    const textArea = document.createElement("textarea");
+                    textArea.value = textToCopy;
+                    textArea.style.position = "fixed";
+                    textArea.style.left = "-999999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    document.execCommand('copy');
+                    textArea.remove();
+                    showToast(`Kopyalandı: ${textToCopy}`);
+                }
+            } catch (err) {
+                showToast("Kopyalama başarısız oldu.", true);
+            }
+        }
+
+        /**
+         * İşlem geribildirimi için minimal toast sistemi
+         */
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `px-4 py-2 rounded shadow-lg text-sm font-medium text-white flex items-center gap-2 toast-animate ${isError ? 'bg-red-600' : 'bg-emerald-600'}`;
+            toast.innerHTML = `
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${isError ? 'M6 18L18 6M6 6l12 12' : 'M5 13l4 4L19 7'}"></path></svg>
+                ${message}
+            `;
+            
+            els.toastContainer.appendChild(toast);
+            
+            // Animasyon bitiminde elementi DOM'dan temizle
+            setTimeout(() => {
+                if(toast.parentNode) toast.parentNode.removeChild(toast);
+            }, 2000);
+        }
+
+        // --- Başlangıç Tetiklemesi (Boot-up Sequence) ---
+        updateOutputs();
+
+    </script>
+</body>
+</html>
