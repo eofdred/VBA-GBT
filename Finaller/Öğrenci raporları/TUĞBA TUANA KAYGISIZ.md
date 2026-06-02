@@ -30,24 +30,24 @@ NİHAİ DURUM: NOTLANDIRMAYA UYGUN
 
 ### GENEL ANALİZ
 
-- **Üstlenilen Rol ve Konu Uygunluğu:** Öğrenci, teknik anlamda bir bilimsel danışman veya çevre uzmanı rolünü veri setleri üzerinden başarıyla temellendirmiş; NOAA NCRMP gözlem verilerini ve IPCC SSP2-4.5 emisyon projeksiyonlarını konuya derinlemesine entegre etmiştir. Ancak hazırlanan döküman, bir kanun yapıcıya veya karar alıcı üst düzey bir yöneticiye somut çözümler sunan ve eyleme çağıran bir "politika/karar belgesi" üslubundan ziyade, standart bir "akademik ödev/makale teknik raporu" formatında kalmıştır. Yöneticiye hitap hissi arka planda kalmıştır.
+- **Üstlenilen Rol ve Konu Uygunluğu:** Öğrenci, bir karar alıcıya veya üst düzey yöneticiye somut çözümler ve politika teklifleri sunan profesyonel bir uzman/danışman rolünü benimsemek yerine, çalışmayı tamamen klasik bir üniversite ödevi ve akademik teknik rapor dilinde sunmuştur. Yöneticiye hitap etme, kurumsal bir perspektif sunma ve eyleme geçirilebilir stratejiler önerme hissi zayıf kalmış, metin akademik ödev sınırlarının dışına çıkamamıştır.
     
-- **Anlatım ve Basitlik Düzeyi:** "5 yaşındaki birine anlatır gibi" anlatım ilkesine tam olarak uyulmamıştır. Metin; "zooxanthellae", "hücresel otomata", "Moore mahallesi", "Lotka-Volterra av-avcı denklemleri" ve "Inverse Distance Weighting interpolasyonu" gibi ağır teknik ve akademik jargona fazlasıyla boğulmuştur. Sektörü hiç bilmeyen bir yöneticinin bu parametrelerin nihai etkilerini tek okumada kavraması oldukça güçtür. Tablo tasarımı işlevsel olsa da dildeki karmaşıklık sadelik notunu düşürmektedir.
+- **Anlatım ve Basitlik Düzeyi:** "5 yaşındaki birine anlatır gibi" ilkesi belirgin şekilde göz ardı edilmiştir. Sektöre yabancı bir yöneticinin tek okumada kavramasını zorlaştıracak düzeyde yoğun akademik jargon (zooxanthellae algleri, hücresel otomata yaklaşımı, Moore mahallesi, Lotka-Volterra diferansiyel denklemleri) ve karmaşık matematiksel formüller sadeleştirilmeden doğrudan rapora yansıtılmıştır. Geleceğe yönelik projeksiyonlar yönetsel bir özet niteliği taşımamaktadır.
     
-- **Yapay Zeka İzleri ve Özensizlik:** Öğrenci giriş kısmında yapay zeka destekli araçlardan yararlandığını açıkça ifade etmiştir. Bununla birlikte metinde, yapay zekaya has tipik basmakalıp kalıplar ("Simülasyon aşağıdaki temel hedefleri karşılamak üzere tasarlanmıştır", "Bu simülasyon birçok açıdan benzer araştırma araçlarından ayrışmaktadır") ve düzenlenmemiş robotik dolgu paragrafları yoğun şekilde hissedilmektedir. Öğrenci metni kendi özgün diliyle yeterince harmanlamamıştır.
+- **Yapay Zeka İzleri ve Özensizlik:** Metin genel olarak düzenli görünse de, yapay zeka araçları tarafından üretilen basmakalıp geçiş cümleleri, jenerik kısıtlamalar listesi ve içi boş dolgu paragrafları belirgindir. Öğrenci yapay zekadan aldığı çıktıları kendi özgün kurumsal diliyle yeterince harmanlamamış ve ham yapıları temizlememiştir.
     
-- **E-Posta Dil ve Profesyonelliği:** Öğrencinin teslim ettiği dökümanda, dökümanı kurumsal bir dille yöneticiye sunması gereken "E-Posta Gövdesi" (Konu satırı, profesyonel hitap, emoji kısıtlaması, saygı ifadesi ve imza) tamamen eksiktir. Herhangi bir e-posta metni sunulmadığı için bu kriterden tam puan kaybı yaşanmıştır.
+- **Rapor Dil ve Profesyonelliği:** Rapor konusu net bir şekilde tanımlanmış ve teknik raporda emoji kullanılmamış olması kurumsal üslup açısından olumlu bir puan olmuştur. Ancak profesyonel bir raporun sahip olması gereken uygun bir hitap başlığı (Sayın Yetkili / Sayın Yönetici) ile başlama kuralına uyulmamış, metin sonunda kurumsal nezaket içeren bir kapanış ve resmi imza bloğu yapılandırılmamıştır.
     
 
 ### PUAN KIRILMA GEREKÇELERİ
 
-- Raporda "5 yaşındaki birine anlatır gibi" ilkesine uyulmayıp, sektörü bilmeyen bir yöneticinin anlayamayacağı düzeyde ağır akademik/teknik jargon (Moore mahallesi, Lotka-Volterra diferansiyel denklemleri, IDW enterpolasyonu vb.) kullanıldığı için puan kırılmıştır.
+- Rapor, bir probleme çözüm sunan profesyonel bir vizyon yerine sıradan bir akademik ödev/makale formatında yazıldığı ve karar alıcıya hitap hissi zayıf olduğu için puan kırılmıştır.
     
-- Metin, bir yöneticiye hitap eden karar alıcı sade bir dilden ziyade klasik akademik ödev üslubuyla yazıldığı için puan kırılmıştır.
+- "5 yaşındaki birine anlatır gibi" anlatım ilkesine uyulmayarak, teknik ve biyolojik jargonlar ile diferansiyel denklemler yöneticinin anlayabileceği sadeliğe indirgenmediği için puan kırılmıştır.
     
-- Yapay zekaya ait basmakalıp başlıklar, geçiş cümleleri ve dolgu metin yapıları dökümandan tamamen temizlenmediği için puan kırılmıştır.
+- Kurumsal raporlama standartlarının gerektirdiği resmi hitap başlığı ile profesyonel saygı ve kapanış ifadeleri eksik bırakıldığı için puan kırılmıştır.
     
-- Rapor sunumu için yapılması zorunlu olan profesyonel kurumsal e-posta iletişimi (konu, hitap, emoji kontrolü, imza) metinde hiç yer almadığı için puan kırılmıştır.
+- Yapay zeka çıktısı olduğu belirgin olan jenerik dolgu metinleri ve basmakalıp paragraflar kurumsal bir süzgeçten geçirilip temizlenmediği için puan kırılmıştır.
     
 
 **NİHAİ FİNAL NOTU:** 70 XP
