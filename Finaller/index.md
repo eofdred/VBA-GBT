@@ -26,7 +26,7 @@ title: Welcome to Quartz
 | 20  | 2511317021 | ECE NAZ AKTÜRK           |                  |            |
 | 21  | 2511317022 | BURAK TALHA DEMİR        |                  |            |
 | 22  | 2511317023 | EMİN UMUT KILIÇ          |                  |            |
-| 23  | 2511317024 | [[TUĞBA TUANA KAYGISIZ]] | Mercan Resifleri | 80         |
+| 23  | 2511317024 | [[TUĞBA TUANA KAYGISIZ]] | Mercan Resifleri | 90         |
 | 24  | 2511317025 | AYŞE TUANA GÜRKAN        |                  |            |
 | 25  | 2511317026 | EYLÜL ÜSTÜNKAYA          |                  |            |
 | 26  | 2511317027 | BAKİ KORKMAZ             |                  |            |
