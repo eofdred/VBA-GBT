@@ -816,7 +816,10 @@ export async function handleSync(argv) {
       "Pulling updates from your repository. You may need to resolve some `git` conflicts if you've made changes to components or plugins.",
     );
     try {
-      gitPull(ORIGIN_NAME, QUARTZ_SOURCE_BRANCH);
+      const currentBranch = execSync("git rev-parse --abbrev-ref HEAD")
+        .toString()
+        .trim();
+      gitPull(ORIGIN_NAME, currentBranch);
     } catch {
       console.log(
         styleText(
