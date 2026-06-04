@@ -35,3 +35,5 @@ title: Welcome to Quartz
 | 29  | 2511317031 | AYŞE AYDIN               |          |                                    |
 | 30  | 2511317032 | [[ALİ HAYDAR POLAT]]     | 75       | 95                                 |
 
+[[GitHub Repo Değerlendirme Komutu]]
+[[Rapor Değerlendirme Komutu]]
