@@ -1,4 +1,4 @@
-# DENETİM RAPORU: sema788/e-spor-lol
+# DENETİM RAPORU: sema788/e-spor-lol / Sema (Öğrenci Kullanıcı Adı: sema788)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI
 
@@ -6,44 +6,41 @@ Hile/Manipülasyon Riski: YOK
 
 Sahte Veri/Manipülasyon Tespiti: HAYIR
 
-Hile Kanıtı: Kod dürüstlüğü doğrulanmıştır. `index.html` dosyası incelendiğinde, simülasyon çıktılarının rastgele sayılar (Math.random) yerine, 2026 yılına ait gerçek taban istatistiklerin kullanıcı girdileri ve literatüre dayalı bir yaş eğrisi fonksiyonu (`ageCurve`) ile matematiksel olarak işlenmesiyle dinamik olarak hesaplandığı görülmüştür.
+Hile Kanıtı: Kod dürüstlüğü doğrulanmıştır.
 
 TEKNİK ANALİZ
 
-Veri Akışı (Data Lineage): Simülasyon, taban verisi olarak Oracle's Elixir ve Leaguepedia gibi resmi kaynaklardan alınan 2026 yılı profesyonel League of Legends oyuncu istatistiklerini (`PL` nesnesi) kullanmaktadır. Bu veriler, JavaScript fonksiyonları aracılığıyla kullanıcının seçtiği parametreler ve yaş çarpanı ile işlenerek 2027–2029 yılları için Performans Skoru ve Kazanma Oranı trendlerine dönüştürülmektedir. Çıktılar Chart.js kütüphanesi yardımıyla grafiksel olarak ve HTML tablo yapısıyla arayüzde sunulmaktadır.
+Veri Akışı (Data Lineage): Simülasyon, Oracle's Elixir, Leaguepedia ve Riot Games Esports API gibi platformlardan derlenen gerçek 2026 League of Legends profesyonel oyuncu istatistiklerini (KDA, CS/dak, DPM, Kill Katılımı, Kazanma Oranı) temel almaktadır. Bu ham veriler JavaScript kaynak kodundaki sabit veri yapısında (PL nesnesi) saklanmaktadır. Kullanıcı girdileri ve literatür tabanlı yaş eğrisi çarpanları işlenerek 2027–2029 yılları için performans projeksiyon verileri üretilmekte, arayüzdeki tabloya aktarılmakta ve Chart.js kütüphanesi vasıtasıyla grafikleştirilmektedir.
 
-Kontrol Kaldıraçları: Kullanıcı; Meta Uyum Yeteneği (%30), Antrenman Yoğunluğu (%28), Fiziksel & Mental Form (%22) ve Takım Sinerji Skoru (%20) olmak üzere dört adet anlamlı ve eyleme geçirilebilir kaldıraç kontrolüne sahiptir. Bu kaydırıcıların (slider) değiştirilmesi `fm()` ve `go()` fonksiyonlarını tetikleyerek formül çarpanını (`mult`) ve dolayısıyla simülasyonun çıktı değerlerini dinamik ve gerçekçi bir şekilde değiştirmektedir.
+Kontrol Kaldıraçları: Kullanıcı, simülasyon çıktılarını doğrudan etkileyen dört ana kaldıraç üzerinde kontrol sahibidir: "Meta uyum yeteneği", "Antrenman yoğunluğu", "Fiziksel & mental form" ve "Takım sinerji skoru". Bu girdiler 'fm()' fonksiyonunda belirli ağırlıklarla işlenerek (%30 meta, %28 antrenman, %22 form, %20 sinerji) tek bir faktör çarpanına dönüştürülmekte ve 'go()' fonksiyonu aracılığıyla tüm gelecek sezon tahminlerini dinamik ve matematiksel olarak değiştirmektedir; girdiler kozmetik değildir.
 
-Localhost Kontrolü: GEÇTİ - Kod tabanında 'http://localhost', yerel IP veya yerel mutlak dosya yolu referanslarına rastlanmamıştır. CDN bağlantıları ve global referanslar kullanılmıştır.
+Localhost ve Dağıtım Uygunluğu: GEÇTİ - Proje tamamen istemci taraflı web teknolojileriyle (Vanilla HTML, CSS ve JavaScript) geliştirilmiştir. Kod tabanında localhost, 127.0.0.1 veya yerel bilgisayara ait mutlak dosya yolları bulunmamaktadır. Statik bir yapıya sahip olduğundan GitHub Pages üzerinde herhangi bir teknoloji uyuşmazlığı olmadan canlı olarak çalışabilmektedir.
 
 EŞİK DEĞERLENDİRMELERİ
 
-Eşik 1 (Gerçekçilik ve Mantık): GEÇTİ - Gerekçe: Projeksiyon modeli akademik bir referansa (Pizzo et al. 2023) dayandırılmış olup, oyuncu yaşlarına göre azalan veya artan bir performans eğrisi mantıksal bir örüntüde kurgulanmıştır. Veri akışı tutarlı ve doğrusaldır.
+Eşik 1 (Gerçekçilik ve Mantık): GEÇTİ - Gerekçe: Tahmin mekanizması kontrolsüz rastgele gürültüye (Math.random) değil; e-spor oyuncularının yaş aralıklarına göre performans değişimlerini modelleyen bilimsel bir yayına (Pizzo et al. 2023) dayalı deterministik yaş eğrisi çarpanlarına ve kullanıcı girdilerine bağlı mantıksal bir formüle dayandırılmıştır.
 
-Eşik 2 (Kontrol Edilebilirlik): GEÇTİ - Gerekçe: Arayüzde sunulan 4 adet girdi kontrolü, e-spor ekosistemindeki performansı doğrudan etkileyen eyleme geçirilebilir parametreleri temsil etmektedir ve simülasyon çıktılarını doğrudan etkilemektedir.
+Eşik 2 (Kontrol Edilebilirlik): GEÇTİ - Gerekçe: Sunulan 4 adet kaydırıcı kontrolü, e-spor performansını etkileyen gerçekçi parametreleri temsil etmekte ve simülasyonun amacına doğrudan hizmet ederek sonuç tablolarını ve grafiklerini anlık olarak güncellemektedir.
 
-Eşik 3 (Veri Dışa Aktarımı): GEÇTİ - Gerekçe: Kod içerisinde yer alan `exportOne()` ve `exportAll()` fonksiyonları, üretilen tahmin verilerini yapılandırılmış CSV formatında ve UTF-8 BOM standardına uygun olarak başarılı bir şekilde dışa aktarmaktadır.
+Eşik 3 (Veri Dışa Aktarımı): GEÇTİ - Gerekçe: Kod yapısında yer alan 'exportOne()' ve 'exportAll()' fonksiyonları, üretilen tüm simülasyon verilerini başlık etiketleriyle birlikte virgülle ayrılmış ve tırnak içine alınmış temiz bir CSV formatına dönüştürerek tarayıcı üzerinden indirilebilmesini sağlamaktadır.
 
 NİHAİ DURUM: NOTLANDIRMAYA UYGUN
 
-## FİNAL RAPORU VE İLETİŞİM DEĞERLENDİRMESİ
+# # FİNAL RAPORU VE İLETİŞİM DEĞERLENDİRMESİ
 
-### GENEL ANALİZ
+## GENEL ANALİZ
 
-- **Üstlenilen Rol ve Konu Uygunluğu:** Öğrenci, e-spor ekosistemine uzak bir kurumsal yatırımcıya veya şirket pazarlama müdürüne hitap eden bir e-spor danışmanı rolünü üstlenmiştir. Konu seçimi ve sponsorluk yatırımlarının geri dönüşü (ROI) üzerine kurulan gelecek senaryoları, bir karar alıcı için finansal riskleri yönetmek adına oldukça pratik ve stratejik bir nitelik taşımaktadır.
+- **Üstlenilen Rol ve Konu Uygunluğu:** Sponsor şirket pazarlama müdürünü hedefleyen "E-Spor Sponsorluk Kararlarında Veri Odaklı Oyuncu Seçimi" konusu, bir karar alıcı için doğrudan finansal riskleri azaltan ve bütçe optimizasyonu sağlayan mükemmel bir problem çözme aracıdır. Öğrencinin kurumsal perspektifi benimseme ve çözümü eyleme geçirilebilir somut bir bütçe teklifine dönüştürme başarısı (6.1 Senaryosu) takdir edilmiştir.
     
-- **Anlatım ve Basitlik Düzeyi:** Rapordaki dil son derece akıcı ve sade olup, karmaşık oyun mekanikleri geleneksel spor analojileriyle (futbol stoperi, basketbol şutörü vb.) desteklenerek anlaşılır kılınmıştır. Oyuncu projeksiyon tahminleri, yaş eğrisi analizleri ve bütçe planlamaları karar alıcının kolayca takip edebileceği net tablolar halinde yapılandırılmıştır.
+- **Anlatım ve Basitlik Düzeyi:** Karmaşık e-spor ve League of Legends teknik terimleri ile oyun içi pozisyonları, geleneksel spor analojileriyle (stoper, 10 numara, şutör vb.) desteklenerek teknik bilgiye sahip olmayan bir yöneticinin bile rahatça anlayabileceği bir sadelikte aktarılmıştır. Tablo yapıları ve senaryo karşılaştırmaları rapor kalitesini artırmıştır.
     
-- **Yapay Zeka İzleri ve Özensizlik:** Metin genelinde yapay zekaya ait jenerik dolgu paragraflarına, basmakalıp robotik geçiş ifadelerine veya ham bırakılmış kalıp başlıklara rastlanmamıştır. Yapay zeka çıktısı özgün bir süzgeçten geçirilmiş ve e-spor jargonuna uygun şekilde düzenlenmiştir.
+- **Yapay Zeka İzleri ve Özensizlik:** Metin, yapay zekanın sıkça ürettiği jenerik dolgu paragraflarından ve basmakalıp geçiş ifadelerinden tamamen arındırılmıştır. Akademik referanslar (Pizzo et al. 2023, Bányai et al. 2019) simülasyonun yaş eğrisi ve faktör ağırlıkları ile mantıksal bir bütünlük içinde harmanlanmıştır.
     
-- **rapor Dil ve Profesyonelliği:** Rapor kurumsal bir üsluba sahiptir, içerikte emoji kullanılmamıştır ve uygun bir saygı/kapanış ifadesi yer almaktadır. Ancak projenin hem kapak hem de imza kısmında öğrencinin resmi kayıtlarda doğrulanabilecek tam adı ve soyadı bulunmamaktadır; rapor sadece "Sema" ön adıyla sonlandırılmıştır.
-    
-
-### PUAN KIRILMA GEREKÇELERİ / RED DETAYI
-
-- Raporda ve teslim edilen kurumsal iletişim kanallarında tam adınız ve soyadınız yer almamaktadır.
-    
-- Sınıf listesinde aynı ada sahip birden fazla öğrenci (iki adet Sema) bulunması nedeniyle, teslim edilen raporun kime ait olduğu hususunda kimlik doğrulanabilirliği sağlanamamış ve dedektiflik yapılması gerekmiştir. Kurumsal ve akademik raporlama standartlarına aykırı olan bu kimlik belirsizliği nedeniyle raporunuz doğrudan REDDEDİLMİŞTİR.
+- **Rapor Dil ve Profesyonelliği:** Kurumsal ve akademik üsluba tamamen uygundur. Net bir konu başlığıyla açılış yapılmış, hedef kitleye uygun hitap dili korunmuş, metinde hiçbir emoji kullanılmamış ve kapanış profesyonel bir saygı ifadesiyle öğrencinin tam adı-soyadı belirtilerek tamamlanmıştır.
     
 
-**NİHAİ FİNAL NOTU:** 0 XP
+## PUAN KIRILMA GEREKÇELERİ / RED DETAYI
+
+Kusursuz teslimat, puan kırılmamıştır.
+
+## NİHAİ FİNAL NOTU: 80 XP

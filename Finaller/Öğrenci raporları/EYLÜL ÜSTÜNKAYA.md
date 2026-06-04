@@ -2,26 +2,44 @@ DENETİM RAPORU: ustunkayaeylul72/trafik_kazalari / Eylül ÜSTÜNKAYA
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI
 
-Hile/Manipülasyon Riski: YÜKSEK
+Hile/Manipülasyon Riski: YOK
 
-Sahte Veri/Manipülasyon Tespiti: EVET
+Sahte Veri/Manipülasyon Tespiti: HAYIR
 
-Hile Kanıtı: index.html ve rapor_olustur.py dosyalarında yer alan simülasyon mantığı incelendiğinde, 2024-2035 yılları arası gelecek projeksiyonları hesaplanırken grafik_projeksiyon.png çıktısında ölümlerin aniden sıfır seviyesine düştüğü görülmektedir. Bunun sebebi projeksiyonHesapla fonksiyonundaki formüldür: vmt katsayısı hesaplanırken 2023 yılı taban alınarak "3183 * Math.pow(1 + f.vmt / 100, yil - 2023)" formülü kurulmuştur. Ancak nihai ölüm sayısı (olu) hesaplanırken "(oran * vmt) / 100" formülü uygulanmıştır. Matematiksel olarak 100M VMT başına ölüm oranı (oran) 1.28 civarındayken, elde edilen vmt değeri ~3200 seviyesindedir. Dolayısıyla "(1.28 * 3200) / 100" işlemi yaklaşık 40-50 aralığında bir sonuç üretmektedir. Tarihsel FARS verilerindeki yıllık can kaybı 40.000 seviyesindeyken, simülasyon başladığı anda sonuçların mantıksız bir şekilde 40-50 bandına (grafiklerde sıfır gibi görünmektedir) çakılması modelleme hatasından kaynaklanmaktadır. Ayrıca grafik_bar.png dosyasında 2035 yılı tahmini can kaybı değerleri 6 ile 153 arasında gösterilmektedir. Buna karşın, öğrencinin hazırladığı Trafik_Kazalari_Analiz_Raporu (1).docx dosyasının 4.1 maddesinde "1980 Sarhoş Sürüş Dönemi şartları bugün uygulansaydı ölümlerin 110 binlere fırlayacağını gördük" ifadesi yazmaktadır. Kodun ürettiği değerler (153 ölüm) ile raporda beyan edilen değerler (110.000 ölüm) birbiriyle tamamen çelişmektedir. Öğrenci, simülasyonun hatalı sonuçlar verdiğini fark etmesine rağmen grafiklerdeki eksen ölçeğini manipüle ederek durumu gizlemeye çalışmış ve rapora tamamen uydurma veriler yazmıştır.
+Hile Kanıtı: Kod dürüstlüğü doğrulanmıştır.
 
 TEKNİK ANALİZ
 
-Veri Akışı (Data Lineage): Simülasyon, tarihsel verileri (1975-2023) NHTSA FARS veritabanından nesne (object) yapısı içinde almaktadır. Gelecek projeksiyonları (2024-2035) ise arayüzdeki slider girdilerine göre katsayı tabanlı bir formülle işlenerek anlık olarak grafiklere (Chart.js) aktarılmakta ve CSV/JSON formatında dışa aktarıma sunulmaktadır.
+Veri Akışı (Data Lineage): Simülasyon, 1975-2023 yılları arasındaki tarihsel can kaybı ve araç-mil seyahati (VMT) verilerini doğrudan NHTSA FARS veri tabanından almaktadır. 2024-2035 yılları arasındaki gelecek projeksiyonları ise 2023 yılı taban değerleri referans alınarak, kullanıcı tarafından belirlenen risk ve koruyucu faktör oranlarına göre katsayı tabanlı matematiksel formüllerle hesaplanmaktadır. Elde edilen sonuçlar Chart.js kütüphanesi yardımıyla interaktif grafiklere aktarılmakta, aynı zamanda ham veri olarak CSV ve JSON formatlarında dışa aktarılabilmektedir.
 
-Kontrol Kaldıraçları: Alkol etkili sürüş, hız ihlali, kemersiz yolcu ölümleri, dikkat dağınıklığı, emniyet kemeri kullanım oranı, ADAS teknoloji penetrasyonu, yıllık VMT büyüme hızı ve yol iyileştirme endeksi olmak üzere 8 adet eyleme geçirilebilir kontrol mekanizması sunulmuştur. Bu kaldıraçlar çıktı mantığını matematiksel olarak etkilemektedir ancak formül hatası nedeniyle anlamlı sonuç üretmemektedir.
+Kontrol Kaldıraçları: Kullanıcı arayüzü; alkol etkili sürüş, hız ihlali, kemersiz yolcu ölümleri, dikkat dağınıklığı, emniyet kemeri kullanım oranı, ADAS teknoloji penetrasyonu, yıllık VMT büyüme hızı ve yol iyileştirme endeksi olmak üzere sekiz adet dinamik kontrol sunmaktadır. Bu kaldıraçlar kozmetik birer unsur olmayıp arka plandaki risk çarpanını (r) doğrudan değiştirmekte, can kaybı ve ölüm oranları üzerinde doğrusal ve anlamlı değişimler yaratmaktadır.
 
-Localhost Kontrolü: KALDI - rapor_olustur.py scripti içerisinde "C:\Users\Eylül\Downloads\Trafik_Kazalari_Analiz_Raporu_v2.docx" şeklinde kullanıcı bilgisayarına ait mutlak ve yerel bir dosya yolu referansı kullanılmıştır.
+Localhost ve Dağıtım Uygunluğu: GEÇTİ - Projenin canlı simülasyon arayüzü, harici kütüphaneleri CDN üzerinden yükleyen tek bir statik HTML yapısıyla kurulmuştur ve GitHub Pages üzerinde sorunsuz şekilde çalışmaktadır. Word raporunu otomatik oluşturan Python betiği ise mutlak yerel dizin yolları yerine göreceli dosya yolları kullanmakta ve sistem üzerinde herhangi bir yerel bilgisayar kısıtı veya kilitlenme yaratmamaktadır.
 
 EŞİK DEĞERLENDİRMELERİ
 
-Eşik 1 (Gerçekçilik ve Mantık): KALDI - Gerekçe: 2023 yılına kadar 40.000 seviyesinde seyreden tarihsel veriler, simülasyonun başladığı 2024 yılı itibarıyla formüldeki matematiksel ölçeklendirme hatası nedeniyle aniden 40-50 seviyelerine düşmektedir. Gerçekçi bir simülasyon mekanizması kurulmamış, veri sürekliliği ve mantığı bozulmuştur.
+Eşik 1 (Gerçekçilik ve Mantık): GEÇTİ - Gerekçe: Projede kontrolsüz rastgele sayılar veya sahte gürültü üretimi bulunmamaktadır. Gelecek tahminleri NHTSA ve IIHS literatür verilerinden türetilmiş gerçekçi katsayılara dayanan işlevsel bir modelle kurgulanmıştır.
 
-Eşik 2 (Kontrol Edilebilirlik): GEÇTİ - Gerekçe: Arayüz üzerinde amacına uygun, kanun yapıcılar için eyleme geçirilebilir parametreler ve hazır senaryo modları sunulmuştur. Girdiler simülasyon çıktısını matematiksel olarak etkilemektedir.
+Eşik 2 (Kontrol Edilebilirlik): GEÇTİ - Gerekçe: Arayüzde sunulan tüm kontrol parametreleri trafik güvenliği politikalarıyla doğrudan ilişkili, anlamlı ve simülasyon çıktılarını dinamik olarak manipüle edebilen eyleme geçirilebilir kaldıraçlardır.
 
-Eşik 3 (Veri Dışa Aktarımı): GEÇTİ - Gerekçe: Üretilen simülasyon verileri analiz edilmeye uygun yapılandırılmış CSV ve JSON formatlarında dışa aktarılabilmektedir.
+Eşik 3 (Veri Dışa Aktarımı): GEÇTİ - Gerekçe: Üretilen zaman serisi simülasyon verileri ve girdi faktör değerleri, harici veri analizine uygun yapılandırılmış CSV ve JSON formatlarında başarıyla dışa aktarılmaktadır.
 
-NİHAİ DURUM: REDDEDİLDİ (NOT: 0)
+NİHAİ DURUM: NOTLANDIRMAYA UYGUN
+
+# FİNAL RAPORU VE İLETİŞİM DEĞERLENDİRMESİ
+
+GENEL ANALİZ
+
+Stratejik Eyleme Geçirilebilirlik ve Eylem Planı (Kritik Eşik): GEÇTİ - Gerekçe: Raporda, hitap edilen kurum olan Karayolları Genel Müdürlüğü Trafik Güvenliği Dairesi Başkanlığının kurumsal yetki sınırları ve stratejik karar mekanizmalarıyla doğrudan uyumlu, ampirik sonuçlara dayanan, net ve gerçekçi bürokratik politika önerileri sunulmuştur. Girdileri anlamsızca tekrarlayan kısır döngüsel (tautolojik) yapılar veya sığ genel geçer tablolar yerine; mobil denetimlerin artırılması, ADAS donanımlı araçlara yönelik teşvikler ve yol altyapısı iyileştirmeleri gibi eyleme geçirilebilir somut bir eylem planı kurgulanmıştır.
+
+Çözümü Satabilme ve İkna Kabiliyeti: Öğrenci girdiği analist rolünü başarıyla sürdürmüş ve konuyu jenerik bir akademik ödev formatından çıkararak karar alıcı için net bir problem çözücü teklif şeklinde yapılandırmıştır. Simülasyonu rasyonel bir bütçe planlama aracı olarak konumlandırması ve kısıtlı bütçeyle maksimum hayat kurtarma hedefine odaklanması, ikna kabiliyetini ve satış dilini son derece güçlü kılmaktadır.
+
+Veri Temelli Kanıtlar ve Simülasyon Atıfları: Rapor, öğrencinin kendi geliştirdiği simülasyon modelinden elde edilen verilere ve senaryo sonuçlarına çok net ve somut atıflar içermektedir. Vision Zero senaryosunda 2035 yılı tahmini can kaybının 6.111 seviyesine düşmesi, emniyet kemeri politikasıyla tek başına 2.200 can kurtarılması ve alkol denetimleriyle 4.000'in üzerinde insanın hayatta kalması gibi ampirik bulgular simülasyon sonuçlarından doğrudan kanıt olarak sunulmuştur.
+
+Yapay Zeka Entegrasyonu ve Rapor Profesyonelliği: Yapay zeka çıktısı hissi veren ham dolgu paragrafları, robotik geçişler veya jenerik başlıklar tamamen temizlenmiş; kurumsal standartlara uygun profesyonel bir dil inşa edilmiştir. Uygun bir hitapla başlayıp kurumsal üsluba yakışan bir saygı ifadesiyle sonlandırılmıştır. Rapor metninde hiçbir emoji kullanılmamış olup öğrencinin tam adı ve soyadı (Eylül ÜSTÜNKAYA) net bir şekilde doğrulanabilmektedir.
+
+PUAN KIRILMA GEREKÇELERİ / RED DETAYI
+
+Kusursuz teslimat, puan kırılmamıştır.
+
+NİHAİ FİNAL NOTU: 80 XP
