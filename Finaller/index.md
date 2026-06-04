@@ -8,7 +8,7 @@ title: Welcome to Quartz
 | 2   | 2511317003 | FATMA ÖZTÜRK             |          |                                    |
 | 3   | 2511317004 | SERRA ERDEM              |          |                                    |
 | 4   | 2511317005 | GÜROL PEKMEZCİ           |          |                                    |
-| 5   | 2511317006 | [[AYKUT ÇAKICI]]         | 0        | 30                                 |
+| 5   | 2511317006 | [[AYKUT ÇAKICI]]         | 75       | 100                                |
 | 6   | 2511317007 | [[GÜLBAHAR VAROL]]       | 0        | 20                                 |
 | 7   | 2511317008 | [[RÜVEYDA BAŞBOĞA]]      | 75       | 95                                 |
 | 8   | 2511317009 | [[SEMA NUR DOĞAN]]       | 70       | 85                                 |
@@ -23,7 +23,7 @@ title: Welcome to Quartz
 | 17  | 2511317018 | [[SENA ÇİFÇİ]]           | 0        | 10                                 |
 | 18  | 2511317019 | MELİH YAVUK              |          |                                    |
 | 19  | 2511317020 | [[NURİ ENES SEYHAN]]     | 0        | 15                                 |
-| 20  | 2511317021 | [[ECE NAZ AKTÜRK]]       | 0        | 25                                 |
+| 20  | 2511317021 | [[ECE NAZ AKTÜRK]]       | 80       | 100                                |
 | 21  | 2511317022 | BURAK TALHA DEMİR        |          |                                    |
 | 22  | 2511317023 | [[EMİN UMUT KILIÇ]]      | 80       | 95                                 |
 | 23  | 2511317024 | [[TUĞBA TUANA KAYGISIZ]] | 70       | 90                                 |
