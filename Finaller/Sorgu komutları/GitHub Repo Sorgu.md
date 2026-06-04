@@ -15,9 +15,14 @@ Değerlendirme KESİN ÇOKLU EŞİK SİSTEMİNE (Ya Hep Ya Hiç) dayanmaktadır.
 - **Kontrol Et:** Kod içinde dokunulmadan bırakılmış jenerik yapay zeka yorum satırları (örn: `// TODO: implement real logic here`, `// insert simulation formula here`) var mı?
 - **Kırmızı Çizgi:** Bu tarz yorum satırları varsa ve **ilgili fonksiyonun içi gerçekten boş veya işlevsiz bırakılmışsa** (yani öğrenci AI çıktısını kontrol etmeden kopyalayıp bıraktıysa) doğrudan başarısız say. Yorum satırı olmasına rağmen kod sorunsuz çalışıyor ve mantık kurgulanmışsa bunu sadece teknik analizde bir özensizlik olarak not et ama doğrudan eleme.
 
-### 3. Localhost veya Yerel Dosya Yolu Kontrolü
-- **Kontrol Et:** Kod tabanında `http://localhost:`, `127.0.0.1` veya yerel bilgisayara ait mutlak dosya yollarını (C:/Users/... vb.) ara.
-- **Kırmızı Çizgi:** Canlıda (GitHub Pages vb.) çalışan dağıtım bileşenlerinde bu tarz yerel bağlantılar bulunuyorsa, ödev doğrudan elenir.
+### 3. Localhost, Yerel Dosya Bağımlılığı ve Dağıtım Uyuşmazlığı Kontrolü
+- **Kontrol Et:**
+  1. Kod tabanında `http://localhost:`, `127.0.0.1` veya yerel bilgisayara işaret eden mutlak/dinamik dosya yollarını (C:/Users/..., `Path.home() / 'Downloads'`, `Path.home() / 'Masaüstü'` vb.) ara.
+  2. Canlı yayındaki dağıtım (deployment) kanalını ve teknoloji uyuşmazlığını kontrol et: Python tabanlı backend framework'leri (Streamlit, Flask, Django vb.) statik web barındırma hizmeti sunan GitHub Pages üzerinde **ÇALIŞMAZ**.
+- **Kırmızı Çizgi:** 
+  1. Eğer canlıda çalışan/çalıştırılması hedeflenen kod, kullanıcının yerel bilgisayarında belirli dosya ve yolların bulunmasını zorunlu kılıyorsa ve bu dosyalar bulunamadığında uygulamayı kilitliyorsa (örn: `check_files` veya benzeri yerel doğrulama fonksiyonları),
+  2. Veya öğrenci Python Streamlit gibi dinamik bir uygulamayı doğrudan GitHub Pages (statik sunucu) üzerinde yayınlamaya çalışmış ve bu yüzden canlı bağlantısı kilitlenmiş/bozulmuşsa,
+  **ödev doğrudan ELENİR (REDDEDİLDİ) ve notu 0 sayılır.** (Bu tarz yerel bağımlılıklar ve hatalı hosting yapılandırmaları teknik birer kusurdur.)
 
 ---
 
@@ -54,7 +59,7 @@ Analiz edilen her öğrenci reposu için aşağıdaki markdown şablonuna birebi
 ### TEKNİK ANALİZ
 - **Veri Akışı (Data Lineage):** [Simülasyonun veriyi nereden aldığını, nasıl işlediğini ve çıktı formatını kısaca açıkla.]
 - **Kontrol Kaldıraçları:** [Kullanıcının kontrol edebildiği faktörleri listele ve bunların çıktı mantığını gerçekten değiştirip değiştirmediğini, yoksa sadece kozmetik mi olduğunu onayla.]
-- **Localhost Kontrolü:** [GEÇTİ / KALDI - Canlı yayındaki kodda 'http://localhost' veya yerel yol referansları olup olmadığını belirt.]
+- **Localhost ve Dağıtım Uygunluğu:** [GEÇTİ / KALDI - Canlı yayındaki kodda veya dağıtımda localhost, yerel sistem bağımlılığı (downloads klasörü vb.) veya teknoloji uyuşmazlığı (GitHub Pages'te Python çalıştırma çabası gibi) olup olmadığını belirt.]
 
 ### EŞİK DEĞERLENDİRMELERİ
 - **Eşik 1 (Gerçekçilik ve Mantık):** [GEÇTİ / KALDI] - *Gerekçe:* [Kısa açıklama]
@@ -63,4 +68,4 @@ Analiz edilen her öğrenci reposu için aşağıdaki markdown şablonuna birebi
 
 ---
 **NİHAİ DURUM:** [NOTLANDIRMAYA UYGUN / REDDEDİLDİ (NOT: 0)]
-*(Not: Herhangi bir eşikten KALDI alındıysa veya Hile Riski YÜKSEK ise durum doğrudan REDDEDİLDİ olmalıdır. Asla emoji kullanma)*
+*(Not: Herhangi bir eşikten KALDI alındıysa, Hile Riski YÜKSEK ise ya da Localhost ve Dağıtım Uygunluğu KALDI ise durum doğrudan REDDEDİLDİ olmalıdır. Asla emoji kullanma)*
