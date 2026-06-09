@@ -1,0 +1,18 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.folder == "Öğrenci raporları"
+    order:
+      - file.name
+      - gorev_13
+      - final_notu
+    sort:
+      - property: file.name
+        direction: ASC
+      - property: gorev_13
+        direction: DESC
+    columnSize:
+      note.gorev_13: 169
+      note.final_notu: 153

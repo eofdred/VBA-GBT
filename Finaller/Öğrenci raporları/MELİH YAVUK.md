@@ -1,3 +1,7 @@
+---
+gorev_13: 0
+final_notu: 10
+---
 # DENETİM RAPORU: melihyavuk/toplumun-para-harcamas- / Melih Yavuk
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

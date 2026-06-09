@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 90
+---
 # DENETİM RAPORU: seyhannurienes-afk
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

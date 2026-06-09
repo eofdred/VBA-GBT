@@ -1,3 +1,7 @@
+---
+gorev_13: 70
+final_notu: 90
+---
 # DENETİM RAPORU: tugbatuanakaygisiz-web/coral_simulation / Tuğba Tuana Kaygısız
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

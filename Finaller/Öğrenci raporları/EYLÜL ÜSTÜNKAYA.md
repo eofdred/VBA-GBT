@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 95
+---
 DENETİM RAPORU: ustunkayaeylul72/trafik_kazalari / Eylül ÜSTÜNKAYA
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

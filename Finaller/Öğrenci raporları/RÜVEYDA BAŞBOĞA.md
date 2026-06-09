@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 95
+---
 # DENETİM RAPORU: basbogaruveyda-afk / su-sim-lasyonu- (Rüveyda Başboğa)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

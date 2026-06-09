@@ -1,3 +1,7 @@
+---
+gorev_13: 60
+final_notu: 90
+---
 # DENETİM RAPORU: sudecukurtas/opt-ma
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

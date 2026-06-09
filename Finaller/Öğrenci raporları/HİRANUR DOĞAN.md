@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 100
+---
 # DENETİM RAPORU: dgnhira/mts_acilservissimilasyon
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

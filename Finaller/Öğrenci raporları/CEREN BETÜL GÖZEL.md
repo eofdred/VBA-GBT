@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 85
+---
 DENETİM RAPORU: cerengzell/is-bulma-simulasyonu / Ceren Betül Gözel
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

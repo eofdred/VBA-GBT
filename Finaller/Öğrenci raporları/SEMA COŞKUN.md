@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 100
+---
 # DENETİM RAPORU: sema788/e-spor-lol / Sema (Öğrenci Kullanıcı Adı: sema788)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

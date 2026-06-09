@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 95
+---
 # DENETİM RAPORU: baserdilara94-ui / Eco-Route (Dilara Başer)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

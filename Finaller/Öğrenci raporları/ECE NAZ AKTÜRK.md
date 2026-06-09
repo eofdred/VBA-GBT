@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 100
+---
 # DENETİM RAPORU: ece-naz/hava_yolu
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

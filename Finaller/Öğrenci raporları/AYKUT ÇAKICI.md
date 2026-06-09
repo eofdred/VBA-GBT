@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 100
+---
 # DENETİM RAPORU: aykuutt/calfcare-sim
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

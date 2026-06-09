@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 100
+---
 # DENETİM RAPORU: ozge-nur/cilt-kanseri-simulasyon
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

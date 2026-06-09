@@ -1,3 +1,7 @@
+---
+gorev_13: 70
+final_notu: 85
+---
 # DENETİM RAPORU: semadogaan/bacterialab (Sema Doğan)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

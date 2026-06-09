@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 85
+---
 # DENETİM RAPORU: genesis-risk-terminali / Azra Özçelik
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

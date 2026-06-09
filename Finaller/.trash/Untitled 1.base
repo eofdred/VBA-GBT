@@ -1,0 +1,10 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.inFolder("Öğrenci raporları")
+    order:
+      - file.name
+      - gorev_13
+      - final_notu

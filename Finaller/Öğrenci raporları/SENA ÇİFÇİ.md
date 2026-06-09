@@ -1,3 +1,7 @@
+---
+gorev_13: 0
+final_notu: 10
+---
 # DENETİM RAPORU: senacifci5-prog / Sena Çiftçi
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

@@ -1,3 +1,7 @@
+---
+gorev_13: 80
+final_notu: 95
+---
 # DENETİM RAPORU: tarim-su-simulasyonu / Ayşe Aydın
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

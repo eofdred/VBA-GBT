@@ -1,3 +1,7 @@
+---
+gorev_13: 75
+final_notu: 95
+---
 # DENETİM RAPORU: emin-emek / isi-stresi-simulasyonu (Öğrenci: Emin Emek)
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI

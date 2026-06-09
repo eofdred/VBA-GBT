@@ -1,3 +1,7 @@
+---
+gorev_13: 0
+final_notu: 0
+---
 # DENETİM RAPORU: buraktalhademir/yks-sim-lasyonu
 
 AKADEMİK DÜRÜSTLÜK VE HİLE KARARI
