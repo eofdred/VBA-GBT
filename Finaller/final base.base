@@ -5,14 +5,18 @@ views:
       and:
         - file.folder == "Öğrenci raporları"
     order:
+      - ogrenci_no
       - file.name
       - gorev_13
       - final_notu
     sort:
+      - property: ogrenci_no
+        direction: ASC
       - property: file.name
         direction: ASC
       - property: gorev_13
         direction: DESC
     columnSize:
+      note.ogrenci_no: 171
       note.gorev_13: 169
       note.final_notu: 153

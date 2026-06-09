@@ -1,6 +1,7 @@
 ---
 gorev_13: 60
 final_notu: 90
+ogrenci_no: 2511317012
 ---
 # DENETİM RAPORU: sudecukurtas/opt-ma
 

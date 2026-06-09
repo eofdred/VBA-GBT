@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 100
+ogrenci_no: 2511317013
 ---
 # DENETİM RAPORU: dgnhira/mts_acilservissimilasyon
 

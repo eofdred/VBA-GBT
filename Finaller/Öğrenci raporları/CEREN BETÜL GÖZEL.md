@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 85
+ogrenci_no: 2511317028
 ---
 DENETİM RAPORU: cerengzell/is-bulma-simulasyonu / Ceren Betül Gözel
 

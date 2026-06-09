@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 100
+ogrenci_no: 2511317011
 ---
 # DENETİM RAPORU: sema788/e-spor-lol / Sema (Öğrenci Kullanıcı Adı: sema788)
 

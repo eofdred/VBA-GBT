@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 95
+ogrenci_no: 2511317030
 ---
 # DENETİM RAPORU: emin-emek / isi-stresi-simulasyonu (Öğrenci: Emin Emek)
 

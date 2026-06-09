@@ -1,6 +1,7 @@
 ---
 gorev_13: 0
 final_notu: 10
+ogrenci_no: 2511317018
 ---
 # DENETİM RAPORU: senacifci5-prog / Sena Çiftçi
 

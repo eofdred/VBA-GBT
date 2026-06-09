@@ -1,6 +1,7 @@
 ---
 gorev_13: 70
 final_notu: 85
+ogrenci_no: 2511317009
 ---
 # DENETİM RAPORU: semadogaan/bacterialab (Sema Doğan)
 

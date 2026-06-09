@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 95
+ogrenci_no: 2511317026
 ---
 DENETİM RAPORU: ustunkayaeylul72/trafik_kazalari / Eylül ÜSTÜNKAYA
 

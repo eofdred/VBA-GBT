@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 95
+ogrenci_no: 2511317032
 ---
 # DENETİM RAPORU: plt0051ct-rgb / sosyal-medya-simulatoru
 

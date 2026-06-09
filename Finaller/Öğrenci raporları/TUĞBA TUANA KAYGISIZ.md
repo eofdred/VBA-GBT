@@ -1,6 +1,7 @@
 ---
 gorev_13: 70
 final_notu: 90
+ogrenci_no: 2511317024
 ---
 # DENETİM RAPORU: tugbatuanakaygisiz-web/coral_simulation / Tuğba Tuana Kaygısız
 

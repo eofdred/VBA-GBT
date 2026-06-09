@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 100
+ogrenci_no: 2511317021
 ---
 # DENETİM RAPORU: ece-naz/hava_yolu
 

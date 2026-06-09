@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 85
+ogrenci_no: 2511317015
 ---
 # DENETİM RAPORU: genesis-risk-terminali / Azra Özçelik
 

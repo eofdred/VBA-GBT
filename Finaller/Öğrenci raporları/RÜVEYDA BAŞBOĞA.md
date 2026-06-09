@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 95
+ogrenci_no: 2511317008
 ---
 # DENETİM RAPORU: basbogaruveyda-afk / su-sim-lasyonu- (Rüveyda Başboğa)
 

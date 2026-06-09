@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 90
+ogrenci_no: 2511317020
 ---
 # DENETİM RAPORU: seyhannurienes-afk
 

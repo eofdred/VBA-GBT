@@ -1,6 +1,7 @@
 ---
 gorev_13: 80
 final_notu: 95
+ogrenci_no: 2511317023
 ---
 # DENETİM RAPORU: umutklcc/hvac-simu
 

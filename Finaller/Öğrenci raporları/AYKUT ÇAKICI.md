@@ -1,6 +1,7 @@
 ---
 gorev_13: 75
 final_notu: 100
+ogrenci_no: 2511317006
 ---
 # DENETİM RAPORU: aykuutt/calfcare-sim
 
