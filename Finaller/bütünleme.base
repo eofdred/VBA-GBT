@@ -1,0 +1,21 @@
+views:
+  - type: table
+    name: Bütünleme
+    filters:
+      and:
+        - file.folder == "Öğrenci raporları"
+        - final_notu < 80
+    order:
+      - ogrenci_no
+      - file.name
+      - butunleme_notu
+    sort:
+      - property: ogrenci_no
+        direction: ASC
+      - property: final_notu
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    columnSize:
+      note.ogrenci_no: 171
+      file.name: 212

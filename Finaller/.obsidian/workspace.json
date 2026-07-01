@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "512904856a777e87",
+    "type": "split",
+    "children": [
+      {
+        "id": "a0064741a98b8255",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "99dbbcc1682ef311",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "bütünleme.base",
+                "viewName": "Bütünleme"
+              },
+              "icon": "lucide-table",
+              "title": "bütünleme"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0b7c9de4f2db1cd4",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e872004cc1398a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5b4d697ae88b80e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "46c32c713fa0207f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2b2c4088381a91b1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5efbb1bcdf590503",
+    "type": "split",
+    "children": [
+      {
+        "id": "04b700dcaf8de53f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7a9d05b5e27f3b9e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "bütünleme.base",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for bütünleme"
+            }
+          },
+          {
+            "id": "35ac1cd4375a4f68",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "bütünleme.base",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from bütünleme"
+            }
+          },
+          {
+            "id": "88e816efa7b5a077",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "67534aedc6a6fff5",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "e1396e0713d784e6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "bütünleme.base",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of bütünleme"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "99dbbcc1682ef311",
+  "lastOpenFiles": [
+    "Öğrenci raporları/BURAK TALHA DEMİR.md",
+    "bütünleme.base",
+    "Öğrenci raporları/GÜROL PEKMEZCİ.md",
+    "Öğrenci raporları/MELİH YAVUK.md",
+    "Öğrenci raporları/SERRA ERDEM.md",
+    "Öğrenci raporları/FATMA ÖZTÜRK.md",
+    "Öğrenci raporları/BAKİ KORKMAZ.md",
+    "Öğrenci raporları/AYŞE TUANA GÜRKAN.md",
+    "Sorgu komutları/Rapor Değerlendirme Komutu.md",
+    "Sorgu komutları/GitHub Repo Değerlendirme Komutu.md",
+    "Öğrenci raporları/YAŞAR COŞKUN.md",
+    "Öğrenci raporları/İREM DENERİ.md",
+    "Öğrenci raporları/GÜLBAHAR VAROL.md",
+    "Öğrenci raporları/SENA ÇİFÇİ.md",
+    "final base.base",
+    "index.md",
+    "Öğrenci raporları/HİLAL ELÇİN ŞAHİN.md"
+  ]
+}

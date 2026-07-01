@@ -2,6 +2,7 @@
 gorev_13: 0
 final_notu: 10
 ogrenci_no: 2511317019
+butunleme_notu: 0
 ---
 # DENETİM RAPORU: melihyavuk/toplumun-para-harcamas- / Melih Yavuk
 
@@ -51,3 +52,39 @@ PUAN KIRILMA GEREKÇELERİ / RED DETAYI
     
 
 NİHAİ FİNAL NOTU: 0 XP
+
+# BÜTÜNLEME
+
+## DENETİM RAPORU: melihyavuk/toplumun-para-harcamas-
+
+### AKADEMİK DÜRÜSTLÜK VE HİLE KARARI
+
+- **Hile/Manipülasyon Riski:** DÜŞÜK
+    
+- **Sahte Veri/Manipülasyon Tespiti:** HAYIR
+    
+- **Hile Kanıtı:** Kod dürüstlüğü doğrulanmıştır. Repoda belirgin `Math.random` tabanlı sahte grafik/gürültü üretimi bulunmadı; ancak simülasyonun akademik/modelleme gerçekçiliği zayıftır ve bu durum hileden çok eşik başarısızlığıdır. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+
+### TEKNİK ANALİZ
+
+- **Veri Akışı (Data Lineage):** Repo tek dosyalı `index.html` yapısındadır; arayüzde ülke/yıl seçimi, AGEM senaryosu, eta kaydırıcısı, kişisel harcama girişi ve staking paneli vardır. Veri kaynağı olarak kod içinde sabit ülke sepetleri ve 2023 varsayılan makro değerleri tanımlanmış; ayrıca “Dünya Bankası API’den Makro Verileri Çek” fonksiyonu başlatılmış görünmektedir. Kişisel harcamalar ve yatırım değerleri tarayıcı `localStorage` içinde tutulmaktadır; bu analiz edilebilir dışa aktarım dosyası değildir. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-.git "GitHub - melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+- **Kontrol Kaldıraçları:** Kullanıcı ülke/yıl, senaryo, eta oranı, hedef tutar, harcama kalemleri ve AGT staking tutarını değiştirebilmektedir. Bu kontroller arayüzde fonksiyonlara bağlanmıştır; fakat “antigravitasyon/AGEM” katsayısı, AG kargo/AG evren senaryosu ve token staking, gerçek bir kanun yapıcı/yönetici için doğrudan uygulanabilir politika kaldıracı değildir. Bu nedenle kontroller teknik olarak dinamik olsa da hedef-parametre uyumu zayıftır. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+- **Localhost ve Dağıtım Uygunluğu:** GEÇTİ - Kodda `localhost`, `C:/`, `Path.home` veya `Downloads` gibi yerel sistem bağımlılığına işaret eden kritik iz bulunmadı; repo HTML tabanlı statik uygulama olduğu için GitHub Pages ile temel teknoloji uyuşmazlığı da görünmüyor. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+
+### EŞİK DEĞERLENDİRMELERİ
+
+- **Eşik 1 (Gerçekçilik ve Mantık):** KALDI - _Gerekçe:_ Simülasyon “antigravitasyonel altyapı/AGEM” gibi gerçekçi veya ampirik olarak temellendirilmemiş bir varsayıma dayanıyor; alpha/beta/gamma/delta katsayıları sabit verilmiş, fakat bu katsayıların bilimsel/verisel dayanağı gösterilmiyor. Ülke sepetleri ve makro değerler kullanılsa da çıktının temel mekanizması gerçekçi bir kamu politikası veya ekonomik simülasyon modeli seviyesinde doğrulanabilir değil. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+- **Eşik 2 (Kontrol Edilebilirlik):** KALDI - _Gerekçe:_ Eta, AG senaryosu, hedef tutar, kişisel harcama ve staking kontrolleri vardır; ancak bunların önemli kısmı gerçek bir yönetici/kanun yapıcı için eyleme geçirilebilir karar değişkenleri değildir. Özellikle “AG Kargo”, “AG Evren”, “antigravitasyon katsayısı” ve AGT staking simülasyon hedefiyle akademik-politik karar desteği arasında zayıf/kurgu temelli bağ kurmaktadır. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+- **Eşik 3 (Veri Dışa Aktarımı):** KALDI - _Gerekçe:_ Uygulamada PDF/yazdırma raporu seçeneği vardır; ancak üretilen simülasyon verilerini CSV, JSON veya benzeri yapılandırılmış analiz formatında dışa aktarma mekanizması tespit edilmedi. `localStorage` kalıcı tarayıcı depolaması sağlar ama raporlama/analiz için yapılandırılmış dışa aktarım şartını karşılamaz. ([GitHub](https://github.com/melihyavuk/toplumun-para-harcamas-/blob/main/index.html "toplumun-para-harcamas-/index.html at main · melihyavuk/toplumun-para-harcamas- · GitHub"))
+    
+
+---
+
+**NİHAİ DURUM:** REDDEDİLDİ (NOT: 0)  
+_(Not: Herhangi bir eşikten KALDI alındıysa, Hile Riski YÜKSEK ise ya da Localhost ve Dağıtım Uygunluğu KALDI ise durum doğrudan REDDEDİLDİ olmalıdır. Asla emoji kullanma)_
