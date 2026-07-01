@@ -5,6 +5,6 @@ title: Welcome to Quartz
 - [[GitHub Repo Değerlendirme Komutu]]
 - [[Rapor Değerlendirme Komutu]]
 
-# Final
+# Bütünleme
 
-![[final base.base]]
+![[bütünleme.base]]

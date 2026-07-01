@@ -11,13 +11,14 @@
             "id": "99dbbcc1682ef311",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "bütünleme.base",
-                "viewName": "Bütünleme"
+                "file": "index.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "bütünleme"
+              "icon": "lucide-file",
+              "title": "index"
             }
           }
         ]
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "bütünleme.base",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for bütünleme"
+              "title": "Backlinks for index"
             }
           },
           {
@@ -112,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "bütünleme.base",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from bütünleme"
+              "title": "Outgoing links from index"
             }
           },
           {
@@ -155,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "bütünleme.base",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of bütünleme"
+              "title": "Outline of index"
             }
           }
         ]
@@ -184,8 +185,10 @@
   },
   "active": "99dbbcc1682ef311",
   "lastOpenFiles": [
-    "Öğrenci raporları/BURAK TALHA DEMİR.md",
+    "final base.base",
+    "index.md",
     "bütünleme.base",
+    "Öğrenci raporları/BURAK TALHA DEMİR.md",
     "Öğrenci raporları/GÜROL PEKMEZCİ.md",
     "Öğrenci raporları/MELİH YAVUK.md",
     "Öğrenci raporları/SERRA ERDEM.md",
@@ -198,8 +201,6 @@
     "Öğrenci raporları/İREM DENERİ.md",
     "Öğrenci raporları/GÜLBAHAR VAROL.md",
     "Öğrenci raporları/SENA ÇİFÇİ.md",
-    "final base.base",
-    "index.md",
     "Öğrenci raporları/HİLAL ELÇİN ŞAHİN.md"
   ]
 }
